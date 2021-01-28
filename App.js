@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ActivityIndicator, Image } from 'react-native';
+import { Text, View, ActivityIndicator, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import Stack from './navigation/Stack';
@@ -23,9 +23,12 @@ class App extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Stack />
-      </NavigationContainer>
+      <>
+        <StatusBar barStyle="light-content" />
+        <NavigationContainer>
+          <Stack />
+        </NavigationContainer>
+      </>
     );
   }
 }

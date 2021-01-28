@@ -7,7 +7,7 @@ class Movies extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
         <Text>Movies</Text>
         <Button
           onPress={() => this.props.navigation.navigate('Detail')}

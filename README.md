@@ -86,10 +86,12 @@ class TabClass extends Component {
   }
 
   componentDidUpdate() {
+    const name = getFocusedRouteNameFromRoute(this.props.route);
     this.props.navigation.setOptions({
-      title: getFocusedRouteNameFromRoute(this.props.route),
+      title: name,
     });
   }
+
   render() {
     return (
       <Tabs.Navigator>
@@ -106,3 +108,36 @@ export default TabClass;
 ```
 
 - `getFocusedRouteNameFromRoute(this.props.route)`를 전달하면 현재 탭의 이름을 반환해준다.
+
+---
+
+## navigation style
+
+```jsx
+// navigation/Stack.js
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import Detail from '../screens/Detail';
+import Tabs from './Tabs';
+
+const Stack = createStackNavigator();
+
+export default () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: 'black',
+        borderBottomColor: 'black',
+        shadowColor: 'black',
+      },
+      headerTintColor: 'white',
+      headerBackTitleVisible: false,
+    }}>
+    <Stack.Screen name="Tabs" component={Tabs} />
+    <Stack.Screen name="Detail" component={Detail} />
+  </Stack.Navigator>
+);
+```
+
+- `<Stack.Navigator screenOptions>`는 모든 네비게이션에 적용 시킴.
+
