@@ -36,6 +36,7 @@ class MoviesPresenter extends Component {
         }}
         contentContainerStyle={{
           flex: 1,
+          backgroundColor: 'black',
           justifyContent: this.props.loading ? 'center' : 'flex-start',
         }}>
         {this.props.loading ? (
@@ -59,12 +60,16 @@ class MoviesPresenter extends Component {
             </SliderContainer>
             <Container>
               <Title title={'Popular Movies'} />
-              <ScrollView horizontal>
+              <ScrollView
+                style={{ marginTop: 20 }}
+                contentContainerStyle={{ paddingLeft: 30 }}
+                horizontal
+                showsHorizontalScrollIndicator={false}>
                 {this.props.popular.map((movie) => (
                   <Vertical
                     key={movie.id}
                     poster={movie.poster_path}
-                    title={movie.original_title}
+                    title={movie.title}
                     votes={movie.vote_average}
                   />
                 ))}
