@@ -8,17 +8,22 @@ import Votes from './Votes';
 import Poster from './Poster';
 
 const Container = styled.View`
-  align-items: center;
-  margin-right: 20px;
+  padding: 0px 30px;
+  margin-bottom: 30px;
+  flex-direction: row;
+  align-items: flex-start;
+`;
+
+const Data = styled.View`
 `;
 
 const Title = styled.Text`
   color: white;
   font-weight: 500;
-  margin: 5px 0px 10px 0px;
+  font-size: 15px;
 `;
 
-class Vertical extends Component {
+class Horizontal extends Component {
   constructor(props) {
     super(props);
 
@@ -30,23 +35,22 @@ class Vertical extends Component {
       <TouchableOpacity activeOpacity={0.8}>
         <Container>
           <Poster url={apiImage(this.props.poster)} />
-          <Title>
-            {this.props.title.length > 10
-              ? `${this.props.title.slice(0, 10)}...`
-              : this.props.title}
-          </Title>
-          <Votes votes={this.props.votes} />
+          <Data>
+            <Title>{this.props.title}</Title>
+            <Votes votes={this.props.votes} />
+          </Data>
         </Container>
       </TouchableOpacity>
     );
   }
 }
 
-Vertical.propTypes = {
+Horizontal.propTypes = {
   id: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
 };
 
-export default Vertical;
+export default Horizontal;

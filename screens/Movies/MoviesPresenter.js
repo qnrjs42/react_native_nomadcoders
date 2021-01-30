@@ -5,6 +5,7 @@ import Swiper from 'react-native-web-swiper';
 import Slide from '../../components/Movies/Slide';
 import Title from './Title';
 import Vertical from '../../components/Vertical';
+import Horizontal from '../../components/Horizontal';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -35,7 +36,6 @@ class MoviesPresenter extends Component {
           backgroundColor: 'black',
         }}
         contentContainerStyle={{
-          flex: 1,
           backgroundColor: 'black',
           justifyContent: this.props.loading ? 'center' : 'flex-start',
         }}>
@@ -61,19 +61,31 @@ class MoviesPresenter extends Component {
             <Container>
               <Title title={'Popular Movies'} />
               <ScrollView
-                style={{ marginTop: 20 }}
+                style={{ marginTop: 20, marginBottom: 40 }}
                 contentContainerStyle={{ paddingLeft: 30 }}
                 horizontal
                 showsHorizontalScrollIndicator={false}>
                 {this.props.popular.map((movie) => (
                   <Vertical
                     key={movie.id}
+                    id={movie.id}
                     poster={movie.poster_path}
                     title={movie.title}
                     votes={movie.vote_average}
                   />
                 ))}
               </ScrollView>
+              <Title title={'Coming Soon'} />
+              {this.props.upcoming.map((movie) => (
+                <Horizontal
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  votes={movie.vote_average}
+                  poster={movie.poster_path}
+                  overview={movie.overview}
+                />
+              ))}
             </Container>
           </>
         )}

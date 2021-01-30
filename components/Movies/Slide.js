@@ -105,6 +105,7 @@ Slide.propTypes = {
   backgroundImage: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default Slide;
