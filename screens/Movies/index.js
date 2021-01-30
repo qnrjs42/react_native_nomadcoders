@@ -1,7 +1,8 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
-import { movieAPI } from '../api';
+
+import { movieAPI } from '../../api';
+import MoviePresneter from './MoviesPresenter';
 
 class Movies extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Movies extends Component {
 
     this.state = {
       movies: {
+        loading: true,
         nowPlaying: [],
         popular: [],
         upcoming: [],
@@ -30,6 +32,7 @@ class Movies extends Component {
       const [upcoming, upcomingError] = await movieAPI.upcoming();
       this.setState({
         movies: {
+          loading: true,
           nowPlaying,
           popular,
           upcoming,
@@ -49,17 +52,7 @@ class Movies extends Component {
   };
 
   render() {
-    return (
-      <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Text style={{ color: 'white' }}>
-          {this.state.movies.nowPlaying?.length}
-        </Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('Detail')}
-          title="Go to Movie"
-        />
-      </View>
-    );
+    return <MoviePresneter />;
   }
 }
 
