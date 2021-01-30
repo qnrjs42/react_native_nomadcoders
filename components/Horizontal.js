@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-import { apiImage } from '../api';
-import Votes from './Votes';
 import Poster from './Poster';
+import { trimText } from '../utils';
 
 const Container = styled.View`
   padding: 0px 30px;
@@ -15,12 +14,25 @@ const Container = styled.View`
 `;
 
 const Data = styled.View`
+  align-items: flex-start;
+  width: 60%;
+  margin-left: 25px;
 `;
 
 const Title = styled.Text`
   color: white;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+const Overview = styled.Text`
+  color: white;
+`;
+
+const ReleaseDate = styled.Text`
+  color: white;
+  margin-bottom: 6px;
+  font-size: 12px;
 `;
 
 class Horizontal extends Component {
@@ -34,10 +46,13 @@ class Horizontal extends Component {
     return (
       <TouchableOpacity activeOpacity={0.8}>
         <Container>
-          <Poster url={apiImage(this.props.poster)} />
+          <Poster url={this.props.poster} />
           <Data>
-            <Title>{this.props.title}</Title>
-            <Votes votes={this.props.votes} />
+            <Title>{trimText(this.props.title, 30)}</Title>
+            {this.props.releaseDate && (
+              <ReleaseDate>{this.props.releaseDate}</ReleaseDate>
+            )}
+            <Overview>{trimText(this.props.overview, 120)}</Overview>
           </Data>
         </Container>
       </TouchableOpacity>
@@ -49,7 +64,7 @@ Horizontal.propTypes = {
   id: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  votes: PropTypes.number.isRequired,
+  releaseDate: PropTypes.string,
   overview: PropTypes.string.isRequired,
 };
 

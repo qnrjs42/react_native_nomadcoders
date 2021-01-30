@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 import { apiImage } from '../api';
 import Votes from './Votes';
 import Poster from './Poster';
+import { trimText } from '../utils';
 
 const Container = styled.View`
   align-items: center;
@@ -29,12 +30,8 @@ class Vertical extends Component {
     return (
       <TouchableOpacity activeOpacity={0.8}>
         <Container>
-          <Poster url={apiImage(this.props.poster)} />
-          <Title>
-            {this.props.title.length > 10
-              ? `${this.props.title.slice(0, 10)}...`
-              : this.props.title}
-          </Title>
+          <Poster url={this.props.poster} />
+          <Title>{trimText(this.props.title, 10)}</Title>
           <Votes votes={this.props.votes} />
         </Container>
       </TouchableOpacity>

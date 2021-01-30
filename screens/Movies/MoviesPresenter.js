@@ -18,6 +18,10 @@ const SliderContainer = styled.View`
 const Container = styled.View`
 `;
 
+const UpcomingContainer = styled.View`
+  margin-top: 20px;
+`;
+
 class MoviesPresenter extends Component {
   constructor(props) {
     super(props);
@@ -76,16 +80,18 @@ class MoviesPresenter extends Component {
                 ))}
               </ScrollView>
               <Title title={'Coming Soon'} />
-              {this.props.upcoming.map((movie) => (
-                <Horizontal
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  votes={movie.vote_average}
-                  poster={movie.poster_path}
-                  overview={movie.overview}
-                />
-              ))}
+              <UpcomingContainer>
+                {this.props.upcoming.map((movie) => (
+                  <Horizontal
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    releaseDate={movie.release_date}
+                    poster={movie.poster_path}
+                    overview={movie.overview}
+                  />
+                ))}
+              </UpcomingContainer>
             </Container>
           </>
         )}

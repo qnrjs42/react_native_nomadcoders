@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
+import { apiImage } from '../api';
 
 const PosterImage = styled.Image`
   width: 100px;
@@ -14,7 +15,7 @@ class Poster extends Component {
   }
 
   render() {
-    return <PosterImage source={{ uri: this.props.url }} />;
+    return <PosterImage source={{ uri: apiImage(this.props.url) }} />;
   }
 }
 
