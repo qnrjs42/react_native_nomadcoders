@@ -39,6 +39,7 @@ const Title = styled.Text`
 const Votes = styled.Text`
   color: rgba(220, 220, 220, 1);
   margin-bottom: 7px;
+  font-weight: 500;
   font-size: 12px;
 `;
 
@@ -51,7 +52,7 @@ const Overview = styled.Text`
 const Button = styled.View`
   margin-top: 10px;
   background-color: #e74c3c;
-  padding: 5px 10px;
+  padding: 7px 10px;
   border-radius: 3px;
 `;
 
@@ -67,18 +68,25 @@ class Slide extends Component {
   }
 
   render() {
+    const { backgroundImage, poster, title, votes, overview } = this.props;
     return (
       <Container>
         <BG
           style={{ width: '100%', height: '100%' }}
-          source={{ uri: apiImage(this.props.backgroundImage) }}
+          source={{ uri: apiImage(backgroundImage) }}
         />
         <Content>
-          <Poster url={apiImage(this.props.poster)} />
+          <Poster url={apiImage(poster)} />
           <Data>
-            <Title>{this.props.title.slice(0, 30)}</Title>
-            <Votes>⭐️ {this.props.votes} / 10</Votes>
-            <Overview>{this.props.overview.slice(0, 120)}</Overview>
+            <Title>
+              {title.length > 40 ? `${title.slice(0, 40)}...` : title}
+            </Title>
+            <Votes>⭐️ {votes} / 10</Votes>
+            <Overview>
+              {overview.length > 120
+                ? `${overview.slice(0, 120)}...`
+                : overview}
+            </Overview>
             <TouchableOpacity>
               <Button>
                 <ButtonText>View Details</ButtonText>
