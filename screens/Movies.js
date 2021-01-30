@@ -8,9 +8,13 @@ class Movies extends Component {
     super(props);
 
     this.state = {
-      nowPlaying: {
-        movies: [],
-        error: null,
+      movies: {
+        nowPlaying: [],
+        popular: [],
+        upcoming: [],
+        nowPlayingError: null,
+        popularError: null,
+        upcomingError: null,
       },
     };
   }
@@ -23,13 +27,18 @@ class Movies extends Component {
     try {
       const [nowPlaying, nowPlayingError] = await movieAPI.nowPlaying();
       const [popular, popularError] = await movieAPI.popular();
+      const [upcoming, upcomingError] = await movieAPI.upcoming();
       console.log(nowPlaying);
       console.log(popular);
 
       this.setState({
-        nowPlaying: {
-          movies: nowPlaying,
-          error: nowPlayingError,
+        movies: {
+          nowPlaying,
+          popular,
+          upcoming,
+          nowPlayingError,
+          popularError,
+          upcomingError,
         },
       });
 
@@ -47,7 +56,9 @@ class Movies extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Text>Movies</Text>
+        <Text style={{ color: 'white' }}>
+          {this.state.movies.nowPlaying?.length}
+        </Text>
         <Button
           onPress={() => this.props.navigation.navigate('Detail')}
           title="Go to Movie"
