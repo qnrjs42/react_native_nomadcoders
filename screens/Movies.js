@@ -28,9 +28,6 @@ class Movies extends Component {
       const [nowPlaying, nowPlayingError] = await movieAPI.nowPlaying();
       const [popular, popularError] = await movieAPI.popular();
       const [upcoming, upcomingError] = await movieAPI.upcoming();
-      console.log(nowPlaying);
-      console.log(popular);
-
       this.setState({
         movies: {
           nowPlaying,
@@ -41,8 +38,6 @@ class Movies extends Component {
           upcomingError,
         },
       });
-
-      console.log(nowPlaying);
     } catch (err) {
       console.error(err);
       this.setState({

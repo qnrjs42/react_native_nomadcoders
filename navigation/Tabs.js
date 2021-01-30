@@ -5,7 +5,7 @@ import IonicIcons from 'react-native-vector-icons/Ionicons';
 import Movies from '../screens/Movies';
 import TV from '../screens/TV';
 import Search from '../screens/Search';
-import Favs from '../screens/Favs';
+import Discovery from '../screens/Favs';
 import { Platform } from 'react-native';
 
 const Tabs = createBottomTabNavigator();
@@ -39,7 +39,7 @@ class TabClass extends Component {
               case 'Search':
                 iconName += 'search';
                 break;
-              case 'Favs':
+              case 'Discovery':
                 iconName += 'heart';
                 break;
               default:
@@ -65,7 +65,7 @@ class TabClass extends Component {
         <Tabs.Screen name="Movies" component={Movies} />
         <Tabs.Screen name="TV" component={TV} />
         <Tabs.Screen name="Search" component={Search} />
-        <Tabs.Screen name="Favs" component={Favs} />
+        <Tabs.Screen name="Discovery" component={Discovery} />
       </Tabs.Navigator>
     );
   }
