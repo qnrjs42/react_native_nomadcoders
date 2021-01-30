@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity, View } from 'react-native';
 import { apiImage } from '../../api';
 import Poster from '../Poster';
+import Votes from '../Votes';
 
 const Container = styled.View`
   width: 100%;
@@ -36,11 +37,8 @@ const Title = styled.Text`
   margin-bottom: 10px;
 `;
 
-const Votes = styled.Text`
-  color: rgba(220, 220, 220, 1);
+const VotesContainer = styled.View`
   margin-bottom: 7px;
-  font-weight: 500;
-  font-size: 12px;
 `;
 
 const Overview = styled.Text`
@@ -81,7 +79,9 @@ class Slide extends Component {
             <Title>
               {title.length > 40 ? `${title.slice(0, 40)}...` : title}
             </Title>
-            <Votes>⭐️ {votes} / 10</Votes>
+            <VotesContainer>
+              <Votes votes={votes} />
+            </VotesContainer>
             <Overview>
               {overview.length > 120
                 ? `${overview.slice(0, 120)}...`
