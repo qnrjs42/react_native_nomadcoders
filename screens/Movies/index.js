@@ -32,7 +32,7 @@ class Movies extends Component {
       const [upcoming, upcomingError] = await movieAPI.upcoming();
       this.setState({
         movies: {
-          loading: true,
+          loading: false,
           nowPlaying,
           popular,
           upcoming,
@@ -52,7 +52,7 @@ class Movies extends Component {
   };
 
   render() {
-    return <MoviePresneter />;
+    return <MoviePresneter {...this.state.movies} />;
   }
 }
 

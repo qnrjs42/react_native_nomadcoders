@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import { Dimensions, Text, View } from 'react-native';
-import styled from 'styled-components';
+import { ActivityIndicator, Dimensions, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 import Swiper from 'react-native-web-swiper';
 
 const { width, height } = Dimensions.get('screen');
+
+const Container = styled.View`
+  flex: 1;
+  background-color: black;
+  justify-content: center;
+`;
 
 const Header = styled.View`
   width: 100%;
@@ -24,21 +30,27 @@ class MoviesPresenter extends Component {
     this.state = {};
   }
 
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
+
   render() {
     return (
-      <Header>
-        <Swiper>
-          <Section>
-            <SText>Hello</SText>
-          </Section>
-          <Section>
-            <SText>Hello</SText>
-          </Section>
-          <Section>
-            <SText>Hello</SText>
-          </Section>
-        </Swiper>
-      </Header>
+      <Container>
+        {this.props.loading ? (
+          <ActivityIndicator size="small" color="white" />
+        ) : (
+          <Header>
+            <Swiper controlsEnabled={false} timeout={3} loop>
+              {this.props.nowPlaying.map((movie) => (
+                <Section key={movie.id}>
+                  <Text>{movie.original_title}</Text>
+                </Section>
+              ))}
+            </Swiper>
+          </Header>
+        )}
+      </Container>
     );
   }
 }
