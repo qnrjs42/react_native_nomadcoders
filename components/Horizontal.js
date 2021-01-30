@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 import Poster from './Poster';
-import { trimText } from '../utils';
+import { formatDate, trimText } from '../utils';
 
 const Container = styled.View`
   padding: 0px 30px;
@@ -50,7 +50,7 @@ class Horizontal extends Component {
           <Data>
             <Title>{trimText(this.props.title, 30)}</Title>
             {this.props.releaseDate && (
-              <ReleaseDate>{this.props.releaseDate}</ReleaseDate>
+              <ReleaseDate>{formatDate(this.props.releaseDate)}</ReleaseDate>
             )}
             <Overview>{trimText(this.props.overview, 120)}</Overview>
           </Data>

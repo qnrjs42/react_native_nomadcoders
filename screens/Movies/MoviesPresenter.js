@@ -40,6 +40,7 @@ class MoviesPresenter extends Component {
           backgroundColor: 'black',
         }}
         contentContainerStyle={{
+          flx: this.props.loading ? 1 : 'auto', 
           backgroundColor: 'black',
           justifyContent: this.props.loading ? 'center' : 'flex-start',
         }}>
