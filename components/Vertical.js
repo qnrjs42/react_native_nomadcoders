@@ -31,7 +31,7 @@ class Vertical extends Component {
         <Container>
           <Poster url={this.props.poster} />
           <Title>{trimText(this.props.title, 10)}</Title>
-          <Votes votes={this.props.votes} />
+          {this.props.votes > 0 && <Votes votes={this.props.votes} />}
         </Container>
       </TouchableOpacity>
     );
@@ -40,7 +40,7 @@ class Vertical extends Component {
 
 Vertical.propTypes = {
   id: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
 };

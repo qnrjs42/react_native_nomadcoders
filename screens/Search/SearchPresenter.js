@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SearchInput from '../../components/Search/Input';
 import Horizontal from '../../components/Horizontal';
 import HorizontalSlider from '../../components/HorizontalSlider';
+import Vertical from '../../components/Vertical';
 const Container = styled.ScrollView`
   background-color: black;
 `;
@@ -17,27 +18,40 @@ class SearchPresenter extends Component {
 
   render() {
     return (
-      <Container>
+      <Container contentContainerStyle={{
+        paddingTop: 10,
+      }}>
         <SearchInput
           placeholder={'Write a keybord'}
           value={this.props.keyword}
           onChange={this.props.onChange}
           onSubmit={this.props.onSubmit}
         />
-        <HorizontalSlider title="Movie Results">
-          {this.props.movies.map((movie) => (
-            <Horizontal 
-
-            />
-          ))}
-        </HorizontalSlider>
-        <HorizontalSlider title="TV Results">
-        {this.props.shows.map((show) => (
-            <Horizontal 
-
-            />
-          ))}
-        </HorizontalSlider>
+        {this.props.movies.length !== 0 && (
+          <HorizontalSlider title="Movie Results">
+            {this.props.movies.map((movie) => (
+              <Vertical
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                poster={movie.poster_path || movie.backdrop_path}
+                votes={movie.vote_average}
+              />
+            ))}
+          </HorizontalSlider>
+        )}
+        {this.props.shows.length !== 0 && (
+          <HorizontalSlider title="TV Results">
+            {this.props.shows.map((show) => (
+              <Vertical
+                key={show.id}
+                id={show.id}
+                title={show.name}
+                poster={show.poster_path || show.backdrop_path}
+              />
+            ))}
+          </HorizontalSlider>
+        )}
       </Container>
     );
   }
