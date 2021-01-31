@@ -20,10 +20,13 @@ class Search extends Component {
   onChange = (text) => this.setState({ keyword: text });
 
   search = async () => {
+    if (this.state.keyword === '') {
+      return;
+    }
+
     const [movies, moviesError] = await movieAPI.search(this.state.keyword);
     const [shows, showsError] = await tvAPI.search(this.state.keyword);
 
-    console.log(movies, shows);
     this.setState({
       results: {
         movies,

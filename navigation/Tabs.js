@@ -16,7 +16,7 @@ class TabClass extends Component {
   }
 
   componentDidUpdate() {
-    const name = getFocusedRouteNameFromRoute(this.props.route) ?? 'Movies';
+    const name = getFocusedRouteNameFromRoute(this.props.route) || 'Movies';
     this.props.navigation.setOptions({
       title: name,
     });
@@ -62,8 +62,8 @@ class TabClass extends Component {
             borderTopColor: 'black',
           },
         }}>
-        <Tabs.Screen name="TV" component={TV} />
         <Tabs.Screen name="Movies" component={Movies} />
+        <Tabs.Screen name="TV" component={TV} />
         <Tabs.Screen name="Search" component={Search} />
         <Tabs.Screen name="Discovery" component={Discovery} />
       </Tabs.Navigator>

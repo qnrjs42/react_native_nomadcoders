@@ -52,7 +52,7 @@ class TV extends Component {
   };
 
   render() {
-    return <TVPresenter {...this.state.shows} />;
+    return <TVPresenter refreshingFunc={this.getData} {...this.state.shows} />;
   }
 }
 

@@ -5,10 +5,6 @@ import HorizontalSlider from '../../components/HorizontalSlider';
 import Vertical from '../../components/Vertical';
 import ScrollContainer from '../../components/ScrollContainer';
 
-const Container = styled.ScrollView`
-  background-color: black;
-`;
-
 class SearchPresenter extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +14,12 @@ class SearchPresenter extends Component {
 
   render() {
     return (
-      <ScrollContainer>
+      <ScrollContainer
+        loading={false}
+        refreshingFunc={this.props.onSubmit}
+        contentContainerStyle={{
+          paddingTop: 10,
+        }}>
         <SearchInput
           placeholder={'Write a keybord'}
           value={this.props.keyword}

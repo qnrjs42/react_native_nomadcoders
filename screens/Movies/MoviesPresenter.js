@@ -34,7 +34,9 @@ class MoviesPresenter extends Component {
 
   render() {
     return (
-      <ScrollContainer loading={this.props.loading}>
+      <ScrollContainer
+        refreshingFunc={this.props.refreshingFunc}
+        loading={this.props.loading}>
         {this.props.loading ? (
           <ActivityIndicator size="small" color="white" />
         ) : (

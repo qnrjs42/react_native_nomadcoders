@@ -20,7 +20,9 @@ class TVPresenter extends Component {
 
   render() {
     return (
-      <ScrollContainer loading={this.props.loading}>
+      <ScrollContainer
+        refreshingFunc={this.props.refreshingFunc}
+        loading={this.props.loading}>
         <Container>
           <HorizontalSlider title="Top Reated TV Shows">
             {this.props.popular.map((show) => (
