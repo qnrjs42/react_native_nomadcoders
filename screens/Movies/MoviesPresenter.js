@@ -3,7 +3,6 @@ import { ActivityIndicator, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Swiper from 'react-native-web-swiper';
 import Slide from '../../components/Movies/Slide';
-import Title from './Title';
 
 import Vertical from '../../components/Vertical';
 import Horizontal from '../../components/Horizontal';
@@ -20,10 +19,6 @@ const SliderContainer = styled.View`
 `;
 
 const Container = styled.View``;
-
-const UpcomingContainer = styled.View`
-  margin-top: 20px;
-`;
 
 class MoviesPresenter extends Component {
   constructor(props) {

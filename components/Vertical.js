@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
+import { NavigationContext } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
 import Votes from './Votes';
@@ -19,15 +20,25 @@ const Title = styled.Text`
 `;
 
 class Vertical extends Component {
+  static contextType = NavigationContext;
   constructor(props) {
     super(props);
 
     this.state = {};
   }
 
+  goToDetail = () => {
+    const navigation = this.context;
+    navigation.navigate('Detail', {
+      id: this.props.id,
+      title: this.props.title,
+      votes: this.props.votes,
+    });
+  };
+
   render() {
     return (
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity activeOpacity={0.8} onPress={this.goToDetail}>
         <Container>
           <Poster url={this.props.poster} />
           <Title>{trimText(this.props.title, 10)}</Title>

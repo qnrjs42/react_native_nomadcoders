@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
+import { NavigationContext } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View } from 'react-native';
 import { apiImage } from '../../api';
@@ -60,11 +61,25 @@ const ButtonText = styled.Text`
 `;
 
 class Slide extends Component {
+  static contextType = NavigationContext;
   constructor(props) {
     super(props);
 
     this.state = {};
   }
+
+  goToDetail = () => {
+    const navigation = this.context;
+    navigation.navigate('Detail', {
+      id: this.props.id,
+      title: this.props.title,
+      votes: this.props.votes,
+      poster: this.props.poster,
+      overview: this.props.overvuew,
+      releaseDate: this.props.releaseDate,
+      backgroundImage: this.props.backgroundImage,
+    });
+  };
 
   render() {
     const { backgroundImage, poster, title, votes, overview } = this.props;
@@ -82,7 +97,7 @@ class Slide extends Component {
               <Votes votes={votes} />
             </VotesContainer>
             <Overview>{trimText(overview, 110)}</Overview>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this.goToDetail}>
               <Button>
                 <ButtonText>View Details</ButtonText>
               </Button>

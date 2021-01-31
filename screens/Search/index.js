@@ -40,6 +40,7 @@ class Search extends Component {
     return (
       <SearchPresenter
         {...this.state.results}
+        navigation={this.props.navigation}
         keyword={this.state.keyword}
         onChange={this.onChange}
         onSubmit={this.search}

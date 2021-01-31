@@ -53,7 +53,11 @@ class Movies extends Component {
 
   render() {
     return (
-      <MoviePresneter refreshingFunc={this.getData} {...this.state.movies} />
+      <MoviePresneter
+        navigation={this.props.navigation}
+        refreshingFunc={this.getData}
+        {...this.state.movies}
+      />
     );
   }
 }
