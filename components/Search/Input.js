@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
@@ -6,23 +6,15 @@ const TextInput = styled.TextInput`
   background-color: white;
 `;
 
-class SearchInput extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <TextInput
-        placeholder={this.props.placeholder}
-        returnKeyType={'search'}
-        autoCorrect={false}
-        value={this.props.value}
-        onChangeText={this.props.onChange}
-        onSubmitEditing={this.props.onSubmit}
-      />
-    );
-  }
-}
+const SearchInput = ({ placeholder, value, onChange, onSubmit }) => (
+  <TextInput
+    value={value}
+    onChangeText={onChange}
+    placeholder={placeholder}
+    onSubmitEditing={onSubmit}
+    returnKeyType={'search'}
+  />
+);
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
