@@ -6,6 +6,7 @@ import Slide from '../../components/Movies/Slide';
 import Title from './Title';
 import Vertical from '../../components/Vertical';
 import Horizontal from '../../components/Horizontal';
+import ScrollContainer from '../../components/ScrollContainer';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -15,8 +16,7 @@ const SliderContainer = styled.View`
   margin-bottom: 50px;
 `;
 
-const Container = styled.View`
-`;
+const Container = styled.View``;
 
 const UpcomingContainer = styled.View`
   margin-top: 20px;
@@ -35,15 +35,7 @@ class MoviesPresenter extends Component {
 
   render() {
     return (
-      <ScrollView
-        style={{
-          backgroundColor: 'black',
-        }}
-        contentContainerStyle={{
-          flx: this.props.loading ? 1 : 'auto', 
-          backgroundColor: 'black',
-          justifyContent: this.props.loading ? 'center' : 'flex-start',
-        }}>
+      <ScrollContainer loading={this.props.loading}>
         {this.props.loading ? (
           <ActivityIndicator size="small" color="white" />
         ) : (
@@ -96,7 +88,7 @@ class MoviesPresenter extends Component {
             </Container>
           </>
         )}
-      </ScrollView>
+      </ScrollContainer>
     );
   }
 }

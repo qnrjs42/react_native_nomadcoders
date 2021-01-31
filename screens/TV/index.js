@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
-import { tvAPI } from '../api';
+import { tvAPI } from '../../api';
+import TVPresenter from './TVPresenter';
 
 class TV extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class TV extends Component {
 
     this.state = {
       shows: {
+        loading: true,
         today: [],
         popular: [],
         thisWeek: [],
@@ -33,6 +35,7 @@ class TV extends Component {
 
       this.setState({
         shows: {
+          loading: false,
           today,
           popular,
           thisWeek,
@@ -49,11 +52,7 @@ class TV extends Component {
   };
 
   render() {
-    return (
-      <View>
-        <Text>{this.state.shows.popular?.length}</Text>
-      </View>
-    );
+    return <TVPresenter {...this.props.shows} />;
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 class Search extends Component {
   constructor(props) {
@@ -13,5 +13,6 @@ class Search extends Component {
     );
   }
 }
+
 
 export default Search;
