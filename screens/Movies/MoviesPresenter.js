@@ -9,6 +9,7 @@ import Vertical from '../../components/Vertical';
 import Horizontal from '../../components/Horizontal';
 import HorizontalSlider from '../../components/HorizontalSlider';
 import ScrollContainer from '../../components/ScrollContainer';
+import List from '../../components/List';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -65,8 +66,7 @@ class MoviesPresenter extends Component {
                   />
                 ))}
               </HorizontalSlider>
-              <Title title={'Coming Soon'} />
-              <UpcomingContainer>
+              <List title="Coming Soon">
                 {this.props.upcoming.map((movie) => (
                   <Horizontal
                     key={movie.id}
@@ -77,7 +77,7 @@ class MoviesPresenter extends Component {
                     overview={movie.overview}
                   />
                 ))}
-              </UpcomingContainer>
+              </List>
             </Container>
           </>
         )}

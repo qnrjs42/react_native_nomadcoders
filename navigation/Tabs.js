@@ -16,7 +16,7 @@ class TabClass extends Component {
   }
 
   componentDidUpdate() {
-    const name = getFocusedRouteNameFromRoute(this.props.route);
+    const name = getFocusedRouteNameFromRoute(this.props.route) ?? 'Movies';
     this.props.navigation.setOptions({
       title: name,
     });
