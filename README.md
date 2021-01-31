@@ -95,6 +95,7 @@ class TabClass extends Component {
   render() {
     return (
       <Tabs.Navigator>
+        {/* Tabs.Screen이 제일 위에 있는 컴포넌트가 제일 먼저 화면에 보인다. */}
         <Tabs.Screen name="Movies" component={Movies} />
         <Tabs.Screen name="TV" component={TV} />
         <Tabs.Screen name="Search" component={Search} />
