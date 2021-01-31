@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
-import styled from 'styled-components/native';
 import ScrollContainer from '../../components/ScrollContainer';
-
-
-const CustomText = styled.Text`
-  color: white;
-`;
+import HorizontalSlider from '../../components/HorizontalSlider';
+import Vertical from '../../components/Vertical';
 
 class TVPresenter extends Component {
   constructor(props) {
@@ -19,16 +13,20 @@ class TVPresenter extends Component {
   render() {
     return (
       <ScrollContainer loading={this.props.loading}>
-        <View>
-          <CustomText>hi</CustomText>
-        </View>
+        <HorizontalSlider title="Top Reated TV Shows">
+          {this.props.popular.map((show) => (
+            <Vertical
+              key={show.id}
+              id={show.id}
+              title={show.name}
+              poster={show.poster_path}
+              votes={show.vote_average}
+            />
+          ))}
+        </HorizontalSlider>
       </ScrollContainer>
     );
   }
 }
-
-TVPresenter.propTypes = {
-  
-};
 
 export default TVPresenter;

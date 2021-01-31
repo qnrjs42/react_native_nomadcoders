@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Dimensions, View, ScrollView } from 'react-native';
+import { ActivityIndicator, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Swiper from 'react-native-web-swiper';
 import Slide from '../../components/Movies/Slide';
 import Title from './Title';
+
 import Vertical from '../../components/Vertical';
 import Horizontal from '../../components/Horizontal';
+import HorizontalSlider from '../../components/HorizontalSlider';
 import ScrollContainer from '../../components/ScrollContainer';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
@@ -28,10 +30,6 @@ class MoviesPresenter extends Component {
 
     this.state = {};
   }
-
-  // componentDidMount() {
-  //   console.log(this.props);
-  // }
 
   render() {
     return (
@@ -56,22 +54,17 @@ class MoviesPresenter extends Component {
               </Swiper>
             </SliderContainer>
             <Container>
-              <Title title={'Popular Movies'} />
-              <ScrollView
-                style={{ marginTop: 20, marginBottom: 40 }}
-                contentContainerStyle={{ paddingLeft: 30 }}
-                horizontal
-                showsHorizontalScrollIndicator={false}>
+              <HorizontalSlider title={'Popular Movies'}>
                 {this.props.popular.map((movie) => (
                   <Vertical
                     key={movie.id}
                     id={movie.id}
-                    poster={movie.poster_path}
                     title={movie.title}
+                    poster={movie.poster_path}
                     votes={movie.vote_average}
                   />
                 ))}
-              </ScrollView>
+              </HorizontalSlider>
               <Title title={'Coming Soon'} />
               <UpcomingContainer>
                 {this.props.upcoming.map((movie) => (

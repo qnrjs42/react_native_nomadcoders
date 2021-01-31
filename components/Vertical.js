@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-import { apiImage } from '../api';
 import Votes from './Votes';
 import Poster from './Poster';
 import { trimText } from '../utils';

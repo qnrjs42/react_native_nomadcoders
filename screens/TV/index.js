@@ -52,7 +52,7 @@ class TV extends Component {
   };
 
   render() {
-    return <TVPresenter {...this.props.shows} />;
+    return <TVPresenter {...this.state.shows} />;
   }
 }
 
