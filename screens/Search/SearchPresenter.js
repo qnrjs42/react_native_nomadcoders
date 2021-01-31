@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import styled from 'styled-components';
 import SearchInput from '../../components/Search/Input';
-import Horizontal from '../../components/Horizontal';
 import HorizontalSlider from '../../components/HorizontalSlider';
 import Vertical from '../../components/Vertical';
+import ScrollContainer from '../../components/ScrollContainer';
+
 const Container = styled.ScrollView`
   background-color: black;
 `;
@@ -18,9 +18,7 @@ class SearchPresenter extends Component {
 
   render() {
     return (
-      <Container contentContainerStyle={{
-        paddingTop: 10,
-      }}>
+      <ScrollContainer>
         <SearchInput
           placeholder={'Write a keybord'}
           value={this.props.keyword}
@@ -34,7 +32,7 @@ class SearchPresenter extends Component {
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
-                poster={movie.poster_path || movie.backdrop_path}
+                poster={movie.poster_path}
                 votes={movie.vote_average}
               />
             ))}
@@ -47,12 +45,12 @@ class SearchPresenter extends Component {
                 key={show.id}
                 id={show.id}
                 title={show.name}
-                poster={show.poster_path || show.backdrop_path}
+                poster={show.poster_path}
               />
             ))}
           </HorizontalSlider>
         )}
-      </Container>
+      </ScrollContainer>
     );
   }
 }

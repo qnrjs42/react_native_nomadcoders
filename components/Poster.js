@@ -20,7 +20,7 @@ class Poster extends Component {
 }
 
 Poster.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 export default Poster;

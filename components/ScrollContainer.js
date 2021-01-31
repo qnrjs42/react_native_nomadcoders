@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, ScrollView } from 'react-native';
+import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
 class ScrollContainer extends Component {
@@ -13,6 +13,9 @@ class ScrollContainer extends Component {
   render() {
     return (
       <ScrollView
+        refreshControl={
+          <RefreshControl tintColor={'white'} />
+        }
         style={{ backgroundColor: 'black' }}
         contentContainerStyle={{
           flex: this.props.loading ? 1 : 0,
